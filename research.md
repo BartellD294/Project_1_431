@@ -1,0 +1,22 @@
+** Riot Installation **
+opam install riot
+dune exec ./my_app.exe
+
+** Using Riot **
+[open Riot]: makes it so you don't have to prepend Riot functions with Riot.
+
+[Riot.run @@ fun () -> function_name arg]
+Riot programs always begin with a [Riot.run] call. This takes a function as an argument,
+and runs forever. However, [Riot.shutdown] can be called to terminate the runtime.
+
+[Riot.spawn]
+This function creates a new process. Riot programs are able to run millions of processes
+concurrently, and these processes are more similar to "green threads" or "fibers"
+than traditional operating system processes/threads.
+The function takes a [unit -> unit] function as input, and returns a [pid], which is a
+process ID. Each PID in a program is unique, and can be used to interact with processes
+while they are running.
+
+[wait_pids [pid]]
+This is similar to a traditional multithreading join() function, where the program waits for all
+PIDs to terminate.
