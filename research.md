@@ -33,3 +33,6 @@ while they are running.
 [wait_pids [pid]]
 This is similar to a traditional multithreading join() function, where the program waits for all
 PIDs to terminate.
+
+** Notes **
+The Riot.run function can only accept one argument. This means that if I want to pass 2 elements to a multiprocessed Riot function (for example, a map function taking both a list and a function), I must send them as a tuple.
