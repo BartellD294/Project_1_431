@@ -1,3 +1,16 @@
+** Task Drscription **
+Your task is to make and program a dune OCaml project using
+the  [   Riot      ]  library,  for concurrency programming.
+
+Try to provide a non-trivial application, not just a 'Hello, World'
+program.
+
+Try using the library to program data structures.
+
+You must do some research and study, of course. If nothing else,
+visit  the ecosystem at http://ocamlverse.net/, 
+and https://opam.ocaml.org/packages/index-date.html.
+
 ** Riot Installation **
 opam install riot
 dune exec ./my_app.exe
