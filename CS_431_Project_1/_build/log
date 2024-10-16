@@ -2,9 +2,8 @@
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /home/barteldf/.cache/dune/db
-# Workspace root:
-# /home/barteldf/CS431/projects/project1/Project_1_431/CS_431_Project_1
-# Auto-detected concurrency: 4
+# Workspace root: /home/barteldf/CS431/projects/Project_1_431/CS_431_Project_1
+# Auto-detected concurrency: 12
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -14,4 +13,4 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /home/barteldf/.opam/520/bin/ocamlc.opt -config > /tmp/dune_ec84e9_output
+$ /home/barteldf/.opam/5.2.0/bin/ocamlc.opt -config > /tmp/dune_704edb_output
