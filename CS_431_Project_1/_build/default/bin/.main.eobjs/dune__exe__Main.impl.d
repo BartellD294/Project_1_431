@@ -1,1 +1,1 @@
-bin/main.ml: Array Riot
+bin/main.ml:
