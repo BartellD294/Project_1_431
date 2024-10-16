@@ -1,26 +1,14 @@
 let addone x = x + 1;;
 
-let intermediate x i func =
-  x.(i) <- func x.(i);;
-
-let parallelmap (ar, func) =
-  let ar2 = Array.copy ar in
-  let pid = Riot.spawn (fun () -> intermediate ar2 0 func) in
-  Riot.wait_pids [pid];
-  Riot.shutdown();
-  ar2;;
-
-let a = [|1;2;3;4|];;
-let b = Riot.run parallelmap (a, addone);;
-b;;
+let intermediate ar i func =
+  ar.(i) <- func ar.(i);;
 
 Riot.run @@ fun () ->
-  let parallelmap (ar, func) =
-    let ar2 = Array.copy ar in
-    let pid = Riot.spawn (fun () -> intermediate ar2 0 func) in
-    Riot.wait_pids [pid];
-    Riot.shutdown();
-    ar2;;
-  let pid = spawn (fun () -> Format.printf "Hello, %a!" Pid.pp (self ())) in
-  wait_pids [ pid ];
-  shutdown ()
+  let ar = [|1;2|] in
+  for i = 0 to (Array.length ar) - 1 do
+    let () = Riot.spawn (fun () -> intermediate ar i addone);
+  done;
+  for i = 0 to (Array.length ar) - 1 do
+    Format.printf "%d " ar.(i);
+  done;
+  Riot.shutdown ()

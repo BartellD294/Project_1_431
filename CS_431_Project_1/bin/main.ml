@@ -1,17 +1,14 @@
 let addone x = x + 1;;
 
-let intermediate x i func =
-  x.(i) <- func x.(i);;
+let intermediate ar i func =
+  ar.(i) <- func ar.(i);;
 
-let parallelmap (arr, func) =
-  let pids = [] in
-  let results = Array.make (Array.length arr) 0 in
-    for i = 0 to Array.length arr - 1 do
-      let pids = Riot.spawn (fun () -> intermediate arr i func)
-    done;
-  Riot.shutdown();
-  results;;
-
-let a = [|1;2;3;4|];;
-let b = Riot.run parallelmap (a, addone);;
-b;;
+Riot.run @@ fun () ->
+  let ar = [|1;2|] in
+  for i = 0 to (Array.length ar) - 1 do
+    intermediate ar i addone;
+  done;
+  for i = 0 to (Array.length ar) - 1 do
+    Format.printf "%d " ar.(i);
+  done;
+  Riot.shutdown ()
