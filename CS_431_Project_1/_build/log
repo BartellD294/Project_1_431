@@ -1,4 +1,4 @@
-# dune build
+# dune exec CS_431_Project_1
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /home/barteldf/.cache/dune/db
@@ -14,10 +14,4 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /home/barteldf/.opam/520/bin/ocamlc.opt -config > /tmp/dune_aa5b36_output
-$ (cd _build/default && /home/barteldf/.opam/520/bin/ocamldep.opt -modules -impl bin/main.ml) > _build/default/bin/.main.eobjs/dune__exe__Main.impl.d
-> File "bin/main.ml", line 10, characters 2-6:
-> 10 |   done;
->        ^^^^
-> Error: Syntax error
-[2]
+$ /home/barteldf/.opam/520/bin/ocamlc.opt -config > /tmp/dune_ec84e9_output
