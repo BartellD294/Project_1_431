@@ -1,0 +1,8 @@
+lib: [
+  "_build/install/default/lib/CS_431_Project_1/META"
+  "_build/install/default/lib/CS_431_Project_1/dune-package"
+  "_build/install/default/lib/CS_431_Project_1/opam"
+]
+bin: [
+  "_build/install/default/bin/CS_431_Project_1"
+]

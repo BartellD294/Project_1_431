@@ -7,9 +7,9 @@ id = "process1"
 name = "To Do"
 
   [[processes.tasks]]
-  id = "task1"
-  title = "This is a new feature"
-  description = ""
+  id = "w29v67e73bbget5x58qq3add"
+  title = "Plan application 2 scope and details: data structures were suggested"
+  description = "<p></p>"
   tag = "backlog"
   linkFiles = [ ]
   dueDate = ""
@@ -22,10 +22,21 @@ id = "process2"
 name = "In Progress"
 
   [[processes.tasks]]
-  id = "task2"
-  title = "This is a bug should be repair"
-  description = ""
-  tag = "bug"
+  id = "gx2x2wlj0i2xwxr68vqud6i4"
+  title = "Complete application 1: multithreaded map/fold/filter and similar OCaml tools"
+  description = "<p></p>"
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = ""
+  linkCommits = [ ]
+
+  [[processes.tasks]]
+  id = "jxndp4x423t1bldaiogzhj4f"
+  title = "Research the riot library"
+  description = '<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/riot-ml/riot">https://github.com/riot-ml/riot</a></p><p>Use example programs to get experience</p><p>Take note of Issues tab in case any strange errors occur</p>'
+  tag = "backlog"
   linkFiles = [ ]
   dueDate = ""
   checkList = [ ]
