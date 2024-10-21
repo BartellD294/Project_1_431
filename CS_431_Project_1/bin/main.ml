@@ -11,7 +11,7 @@ let multimap ls func =
   let () = Riot.wait_pids !pids in
   Array.to_list ar;;
 
-let multireduce ls =
+let multifold ls =
   let sum = ref 0 in
   let intermediate sum a =
     sum := !sum + a in
@@ -26,7 +26,7 @@ let multireduce ls =
 Riot.run @@ fun () ->
   let ls = [1;2] in
   let newls = multimap ls addone in
-  let sum = multireduce ls in
+  let sum = multifold ls in
   Format.printf "%d " sum;
   for i = 0 to (List.length newls) - 1 do
     Format.printf "%d " (List.nth newls i);
