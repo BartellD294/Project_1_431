@@ -1,1 +1,1 @@
-bin/main.ml: Array Format Riot
+bin/main.ml: Array Format List Riot
