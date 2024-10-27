@@ -28,6 +28,17 @@ name = "To Do"
   priority = ""
   linkCommits = [ ]
 
+  [[processes.tasks]]
+  id = "xtfwzslqgddn9z4wj0u8lkwh"
+  title = "Fix multithreaded output"
+  description = "<p>Sometimes when running the riot pids will stall and prevent output from being shown</p>"
+  tag = "bug"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = "High"
+  linkCommits = [ ]
+
 [[processes]]
 id = "process2"
 name = "In Progress"
