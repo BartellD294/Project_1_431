@@ -17,20 +17,20 @@ name = "To Do"
   priority = ""
   linkCommits = [ ]
 
-[[processes]]
-id = "process2"
-name = "In Progress"
-
   [[processes.tasks]]
-  id = "gx2x2wlj0i2xwxr68vqud6i4"
-  title = "Complete application 1: multithreaded map/fold/filter and similar OCaml tools"
-  description = "<p></p>"
+  id = "cqbwwo5zarkdawjxj7le9mki"
+  title = "Implement Multithreaded filter function"
+  description = "<p>Using Riot create a multithreaded filtration function similar to our multithreadded map &amp; reduction</p>"
   tag = "backlog"
   linkFiles = [ ]
   dueDate = ""
   checkList = [ ]
   priority = ""
   linkCommits = [ ]
+
+[[processes]]
+id = "process2"
+name = "In Progress"
 
   [[processes.tasks]]
   id = "jxndp4x423t1bldaiogzhj4f"
@@ -46,4 +46,25 @@ name = "In Progress"
 [[processes]]
 id = "process3"
 name = "Done"
-tasks = [ ]
+
+  [[processes.tasks]]
+  id = "gqkjdb62fvnl53380l4iqdwf"
+  title = "Implement Multithreaded Map fuction"
+  description = "Using riot library create a mutlithreaded map "
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = ""
+  linkCommits = [ ]
+
+  [[processes.tasks]]
+  id = "ocvx9x82j36trqu1emjcx6hb"
+  title = "Implement multithreaded reduce"
+  description = "Using riot create a multithreaded reduction function"
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = ""
+  linkCommits = [ ]
