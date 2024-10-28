@@ -7,9 +7,9 @@ let multimap ls func =
   let apply_func a i f = 
     a.(i) <- f a.(i) in
   let pids = ref [] in
-  for i = 0 to Array.length ar - 1 do
+  Array.iteri (fun i _ ->
     pids := (Riot.spawn (fun () -> apply_func ar i func)) :: !pids
-  done;
+  ) ar;
   let () = Riot.wait_pids !pids in
   Array.to_list ar;;
 
@@ -32,16 +32,16 @@ let multifilter pred ls =
   let apply_pred a i p = 
     results.(i) <- p a.(i) in
   let pids = ref [] in
-  for i = 0 to Array.length ar - 1 do
+  Array.iteri (fun i _ ->
     pids := (Riot.spawn (fun () -> apply_pred ar i pred)) :: !pids
-  done;
+  ) ar;
   let () = Riot.wait_pids !pids in
   (* Collect the results based on the results array *)
   let filtered = ref [] in
-  for i = 0 to Array.length results - 1 do
+  List.iteri (fun i _ ->
     if results.(i) then 
       filtered := ar.(i) :: !filtered
-  done;
+  ) ls;
   List.rev !filtered;;
 
 (* Main execution block *)
