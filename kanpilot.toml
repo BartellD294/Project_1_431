@@ -17,20 +17,31 @@ name = "To Do"
   priority = ""
   linkCommits = [ ]
 
-[[processes]]
-id = "process2"
-name = "In Progress"
-
   [[processes.tasks]]
-  id = "gx2x2wlj0i2xwxr68vqud6i4"
-  title = "Complete application 1: multithreaded map/fold/filter and similar OCaml tools"
-  description = "<p></p>"
+  id = "cqbwwo5zarkdawjxj7le9mki"
+  title = "Implement Multithreaded filter function"
+  description = "<p>Using Riot create a multithreaded filtration function similar to our multithreadded map &amp; reduction</p>"
   tag = "backlog"
   linkFiles = [ ]
   dueDate = ""
   checkList = [ ]
   priority = ""
   linkCommits = [ ]
+
+  [[processes.tasks]]
+  id = "xtfwzslqgddn9z4wj0u8lkwh"
+  title = "Fix multithreaded output"
+  description = "<p>Sometimes when running the riot pids will stall and prevent output from being shown</p>"
+  tag = "bug"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = "High"
+  linkCommits = [ ]
+
+[[processes]]
+id = "process2"
+name = "In Progress"
 
   [[processes.tasks]]
   id = "jxndp4x423t1bldaiogzhj4f"
@@ -59,9 +70,15 @@ id = "process3"
 name = "Done"
 
   [[processes.tasks]]
+<<<<<<< HEAD
   id = "f3v89m3tidpk7j9b3baexwjr"
   title = "Application 1: Multimap function"
   description = "An OCaml function that uses the Riot library to create separate processes/threads to apply a function to multiple list elements simultaneously"
+=======
+  id = "gqkjdb62fvnl53380l4iqdwf"
+  title = "Implement Multithreaded Map fuction"
+  description = "Using riot library create a mutlithreaded map "
+>>>>>>> origin/breedyn
   tag = "backlog"
   linkFiles = [ ]
   dueDate = ""
@@ -70,9 +87,15 @@ name = "Done"
   linkCommits = [ ]
 
   [[processes.tasks]]
+<<<<<<< HEAD
   id = "modozlydmsu6juy4zq833lq0"
   title = "Application 1: Multifold function"
   description = "An OCaml function that uses the Riot library to create separate processes/threads to perform addition of multiple list elements simultaneously"
+=======
+  id = "ocvx9x82j36trqu1emjcx6hb"
+  title = "Implement multithreaded reduce"
+  description = "Using riot create a multithreaded reduction function"
+>>>>>>> origin/breedyn
   tag = "backlog"
   linkFiles = [ ]
   dueDate = ""
