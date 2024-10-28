@@ -1,4 +1,4 @@
 (executable
  (public_name CS_431_Project_1)
  (name main)
- (libraries riot))
+ (libraries CS_431_Project_1 riot))
