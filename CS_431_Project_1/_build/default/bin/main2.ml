@@ -83,6 +83,11 @@ let tree_of_list lst =
     ) in
     (pid, subtree)
   ) chunks in
+  Riot.sleep 1.0;
+  let ex p =
+    Riot.exit p Normal
+  in
+  List.iter (fun (pid, _) -> ex pid) subtrees;
   let pids = List.map fst subtrees in
   Printf.printf "Waiting for pids: %d\n" (List.length pids); flush stdout;
   Riot.wait_pids pids;
@@ -111,6 +116,11 @@ let find_element t x =
   in
   helper t;
   Printf.printf "Waiting for pids: %d\n" (List.length !findpids); flush stdout;
+  Riot.sleep 1.0;  (* Add sleep to allow processes to complete *)
+  let ex p =
+    Riot.exit p Normal
+  in
+  List.iter (fun pid -> ex pid) !findpids;
   Riot.wait_pids !findpids;
   !found
 
