@@ -15,8 +15,9 @@ let _size t =
       match t with
       | Empty -> ()
       | Node (_, l, r) -> count := (!count + 1);
-              sizepids := Riot.spawn (fun () -> helper l)::!sizepids;
-              sizepids := Riot.spawn (fun () -> helper r)::!sizepids in
+              let left_pid = Riot.spawn (fun () -> helper l) in
+              let right_pid = Riot.spawn (fun () -> helper r) in
+              sizepids := left_pid :: right_pid :: !sizepids in
 
     helper t;
     Riot.wait_pids !sizepids;
@@ -41,25 +42,27 @@ let rec merge_trees t1 t2 =
       let merged_right = merge_trees merged_left r in
       insert v merged_right
 
-let rec chunks_of n lst =
-  Printf.printf "Starting chunks_of\n"; flush stdout;
-  if n <= 0 then invalid_arg "chunks_of"
-  else
-    let rec take n lst =
-      match n, lst with
-      | 0, _ | _, [] -> []
-      | n, x::xs -> x :: take (n-1) xs
-    in
-    let rec drop n lst =
-      match n, lst with
-      | 0, _ | _, [] -> lst
-      | n, _::xs -> drop (n-1) xs
-    in
-    match lst with
-    | [] -> []
-    | _ -> let chunk = take n lst in
-            Printf.printf "Chunk created: %d elements\n" (List.length chunk); flush stdout;
-            chunk :: chunks_of n (drop n lst)
+      let rec chunks_of n lst =
+        Printf.printf "Starting chunks_of\n"; flush stdout;
+        if n <= 0 then invalid_arg "chunks_of"
+        else
+          let rec take n lst =
+            match n, lst with
+            | 0, _ | _, [] -> []
+            | n, x::xs -> x :: take (n-1) xs
+          in
+          let rec drop n lst =
+            match n, lst with
+            | 0, _ | _, [] -> lst
+            | n, _::xs -> drop (n-1) xs
+          in
+          match lst with
+          | [] -> []
+          | _ -> let chunk = take n lst in
+                  Printf.printf "Chunk created: %d elements\n" (List.length chunk); flush stdout;
+                  let remaining = drop n lst in
+                  if remaining = [] then [chunk]
+                  else chunk :: chunks_of n remaining
 
 (* Function to create a binary tree from a list of integers *)
 let tree_of_list lst =
@@ -80,10 +83,10 @@ let tree_of_list lst =
     ) in
     (pid, subtree)
   ) chunks in
-  Printf.printf "Subtrees created\n"; flush stdout;
   let pids = List.map fst subtrees in
   Printf.printf "Waiting for pids: %d\n" (List.length pids); flush stdout;
   Riot.wait_pids pids;
+  Printf.printf "Subtrees created\n"; flush stdout;
   Printf.printf "Finished waiting for pids\n"; flush stdout;
   let subtrees = List.map (fun (_, subtree) -> !subtree) subtrees in
   let result = List.fold_left merge_trees Empty subtrees in
@@ -99,10 +102,12 @@ let find_element t x =
     match t with
     | Empty -> ()
     | Node (a, l, r) ->
-        if a = x then found := true;
-        let left_pid = Riot.spawn (fun () -> helper l) in
-        let right_pid = Riot.spawn (fun () -> helper r) in
-        findpids := left_pid :: right_pid :: !findpids
+        if !found then ()  (* Check if element is already found *)
+        else if a = x then found := true
+        else
+          let left_pid = Riot.spawn (fun () -> helper l) in
+          let right_pid = Riot.spawn (fun () -> helper r) in
+          findpids := left_pid :: right_pid :: !findpids
   in
   helper t;
   Printf.printf "Waiting for pids: %d\n" (List.length !findpids); flush stdout;
