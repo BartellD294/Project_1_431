@@ -2,3 +2,8 @@
  (public_name CS_431_Project_1)
  (name main)
  (libraries CS_431_Project_1 riot))
+
+(executable
+ (public_name CS_431_Project_2)
+ (name main2)
+ (libraries CS_431_Project_1 riot))
